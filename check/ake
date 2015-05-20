@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+dist() {
+  mkdir -p dist
+  go build -o dist/gutaur-check *.go
+}
+
+package() {
+  version=$(cat ../VERSION)
+  cd dist
+  tar zcvf gutaur-check-linux-amd64-v${version}.tar.gz gutaur-check
+  cd "$OLDPWD"
+}
+
+case "$1" in
+  dist ) dist ;;
+  package ) package ;;
+esac

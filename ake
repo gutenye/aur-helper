@@ -4,7 +4,7 @@ package() {
   prefix="$1"
   [[ "$prefix" == "" ]] && echo "ERROR: USAGE is ./ake package <prefix>" && exit 1
   mkdir -p "$prefix/usr/bin"
-  mkdir -p "$prefix/usr/lib/systemd"
+  mkdir -p "$prefix/lib/systemd/system"
   mkdir -p "$prefix/usr/share/gutaur"
   cp -r bin libexec "$prefix/usr/share/gutaur"
   cp misc/*.{service,timer} "$prefix/lib/systemd/system"
@@ -13,4 +13,5 @@ package() {
 
 case "$1" in
   p | package ) shift; package "$@" ;;
+  b | build )
 esac

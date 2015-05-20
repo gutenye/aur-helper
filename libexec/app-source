@@ -11,6 +11,7 @@ set -e
 source "$APP_ROOT/libexec/lib.sh"
 
 main() {
+  app-sums
   makepkg --source "$@"
 }
 
