@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Summary: Publish this PKGBUILD to AUR website.
+#
+# Usage: gutaur publish [version]
+#
+# Basically, it invokes clean -> update version -> sums -> source -> upload
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  version="$1"
+
+  if [[ $version != "" ]]; then
+    app-version $version
+  fi
+  app-clean
+  app-sums
+  app-source
+  app-upload *.src.tar.gz
+}
+
+main "$@"

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Summary: Return watch url, regexp for gutaur check command
+#
+# Usage: gutaur cat [PKGBUILD]
+#
+# Return watch url, regexp for gutaur check command
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  file="${1:-PKGBUILD}"
+  source "$file"
+  if [[ "$_watch" == "" ]]; then
+    echo ""
+  else
+    echo "$pkgver ${_watch[@]}"
+  fi
+}
+
+main "$@"

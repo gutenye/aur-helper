@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Summary: Clean all *.src.tar.gz *.pkg.tar.xz
+#
+# Usage: gutaur clean
+#
+# Clean all *.src.tar.gz *.pkg.tar.xz
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  rm -f *.src.tar.gz *.pkg.tar.xz
+}
+
+main "$@"

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Summary: Check upstream for new version, and update the PKGBUILD file.
+#
+# Usage: gutaur check <version> <url> <regexp>
+#
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  gutaur-check "$@"
+}
+
+main "$@"

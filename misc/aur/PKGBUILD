@@ -1,0 +1,22 @@
+pkgname="gutaur"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="An AUR helper. PKGBUILD at https://github.com/gutenye/gutaur/tree/master/misc/aur"
+arch=("any")
+url="https://github.com/gutenye/gutaur"
+license=("MIT")
+depends=("archversion")
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/gutenye/gutaur/archive/v${pkgver}.tar.gz"
+  gutaur-check-amd64.exe
+  )
+md5sums=()
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+  ./ake package "$pkgdir"
+
+  cp gutar-check-amd64 "$pkgdir/usr/bin"
+}
+
+# vim:set ts=2 sw=2 et fdm=marker:

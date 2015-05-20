@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Summary: Update PKGBUILD version
+#
+# Usage: gutaur version <version>
+#
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  [[ "$1" == "" ]] && app-help --usage version >&2 && exit 1
+  version="$1"
+  sed -i "s/pkgver=.*/pkgver=$version/" PKGBUILD
+}
+
+main "$@"

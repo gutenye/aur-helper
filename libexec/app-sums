@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Summary: Update checksums in PKGBUILD
+#
+# Usage: gutaur sums
+#
+# it invokes updpkgsums command, and will perform an in place update of the checksums in the
+# PKGBUILD file.
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  updpkgsums "$@"
+}
+
+main "$@"

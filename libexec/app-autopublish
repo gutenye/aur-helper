@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+# Summary: Check and publish
+#
+# Usage: gutaur autopublish [DIR ..]
+#
+# Check upstream for new version, if there's a new veriable available, then publish it.
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  for dir in "$@"; do
+    if [[ ! -e "$dir/PKGBUILD" ]]; then
+      say "::SKIP:: $dir -- there is no PKGBUILD file"
+      continue
+    fi
+
+    #autopublish "$dir" &
+    autopublish "$dir"
+  done
+}
+
+autopublish() {
+  dir="$1"
+  cd "$dir"
+  arg=$(app-cat)
+  if [[ $arg == "" ]];then
+    say "::SKIP:: $dir -- can not find _watch variable in PKGBUILD file"
+    exit 0
+  fi
+  say "::BEGIN:: $dir"
+  say "gutaur-cat: $arg"
+  version=$(app-check $arg)
+  debug "autopublish: app-check $version"
+  if [[ $version == "" ]]; then
+    say "it is already the latest version"
+  else
+    say "found new version $version, begin to publish"
+    app-publish "$version"
+    #sleep 10
+  fi
+  cd "$OLDPWD"
+}
+
+if [[ "$1" == "" ]]; then
+  main "."
+else
+  main "$@"
+fi

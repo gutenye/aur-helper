@@ -1,0 +1,6 @@
+[Unit]
+Description=Gutaur autopublish service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gutaur autopublish /app/aurs/*

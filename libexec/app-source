@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Summary: Generate a source-only tarball.
+#
+# Usage: gutaur source
+#
+# It invokes makepkg --source command, and generate a source-only tarball without downloaded sources.
+
+set -e
+[ -n "$APP_DEBUG" ] && set -x
+source "$APP_ROOT/libexec/lib.sh"
+
+main() {
+  makepkg --source "$@"
+}
+
+main "$@"

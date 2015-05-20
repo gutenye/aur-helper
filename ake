@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+package() {
+  prefix="$1"
+  [[ "$prefix" == "" ]] && echo "ERROR: USAGE is ./ake package <prefix>" && exit 1
+  mkdir -p "$prefix/usr/bin"
+  mkdir -p "$prefix/usr/lib/systemd"
+  mkdir -p "$prefix/usr/share/gutaur"
+  cp -r bin libexec "$prefix/usr/share/gutaur"
+  cp misc/*.{service,timer} "$prefix/lib/systemd/system"
+  ln -s "/usr/share/gutaur/bin/gutaur" "$prefix/usr/bin"
+}
+
+case "$1" in
+  p | package ) shift; package "$@" ;;
+esac
