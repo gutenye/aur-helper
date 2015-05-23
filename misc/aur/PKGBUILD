@@ -1,5 +1,5 @@
 pkgname="gutaur"
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An AUR helper. PKGBUILD at https://github.com/gutenye/gutaur/tree/master/misc/aur"
 arch=("any")
@@ -9,7 +9,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gutenye/gutaur/archive/v${pkgver}.tar.gz"
   "https://github.com/gutenye/gutaur/releases/download/v1.0.0/gutaur-check-linux-amd64-v1.0.0.tar.gz"
   )
-md5sums=('c3d20d1cc23066bd656e61d52fa5f0c7'
+md5sums=('2b7b34f8993661b9ef18f99b54c51a24'
          '4cdd3fb228dad7206067c2e637d1645b')
 
 package() {
@@ -18,7 +18,7 @@ package() {
   cp gutaur-check "$pkgdir/usr/bin"
 
 	cd "$srcdir/$pkgname-$pkgver"
-  ./ake package "$pkgdir"
+  ./ake package archlinux "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et fdm=marker:
