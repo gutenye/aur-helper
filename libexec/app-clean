@@ -11,7 +11,7 @@ set -e
 source "$APP_ROOT/libexec/lib.sh"
 
 main() {
-  rm -f *.src.tar.gz *.pkg.tar.xz
+  rm -rf src pkg *.src.tar.gz *.pkg.tar.xz
 }
 
 main "$@"
