@@ -7,11 +7,15 @@
 # Check upstream for new version, if there's a new veriable available, then publish it.
 
 set -e
-[ -n "$APP_DEBUG" ] && set -x
+(( $DEBUG >= 3 )) && set -x
 source "$APP_ROOT/libexec/lib.sh"
 
 main() {
   for dir in "$@"; do
+    if [[ ! -d "$dir" ]]; then
+      continue
+    fi
+
     if [[ ! -e "$dir/PKGBUILD" ]]; then
       say "::SKIP:: $dir -- there is no PKGBUILD file"
       continue
@@ -28,18 +32,18 @@ autopublish() {
   arg=$(app-cat)
   if [[ $arg == "" ]];then
     say "::SKIP:: $dir -- there is no _watch in PKGBUILD file"
-    exit 0
-  fi
-  say "::BEGIN:: $dir"
-  say "gutaur-cat: $arg"
-  version=$(app-check $arg)
-  debug "autopublish: app-check $version"
-  if [[ $version == "" ]]; then
-    say "it is already the latest version"
   else
-    say "found new version $version, begin to publish"
-    app-publish "$version"
-    #sleep 10
+    say "::BEGIN:: $dir"
+    say "gutaur-cat: $arg"
+    version=$(app-check $arg)
+    debug "autopublish: app-check $version"
+    if [[ $version == "" ]]; then
+      say "it is already the latest version"
+    else
+      say "found new version $version, begin to publish"
+      app-publish "$version"
+      #sleep 10
+    fi
   fi
   cd "$OLDPWD"
 }

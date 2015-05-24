@@ -7,7 +7,7 @@
 # Basically, it invokes clean -> update version -> sums -> source -> upload
 
 set -e
-[ -n "$APP_DEBUG" ] && set -x
+(( $DEBUG >= 3 )) && set -x
 source "$APP_ROOT/libexec/lib.sh"
 
 main() {

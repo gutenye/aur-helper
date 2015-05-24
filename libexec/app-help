@@ -15,7 +15,7 @@
 APP_COMMANDS="autopublish check publish version sums build source upload clean"
 
 set -e
-[ -n "$APP_DEBUG" ] && set -x
+(( $DEBUG >= 3 )) && set -x
 
 command_path() {
   local command="$1"

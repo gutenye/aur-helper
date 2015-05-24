@@ -38,18 +38,23 @@ func Check(curVersionRaw, url, pattern string) {
   doc.Find("a").Each(func(i int, s *goquery.Selection) {
     href := s.AttrOr("href", "")
     matches := pat.FindStringSubmatch(href)
+    //pd(href)
     if len(matches) == 0 {
       return
     }
     shell.Say2("gutaur-check: %s %s\n", href, matches[1])
     versionsRaw = append(versionsRaw, matches[1])
   })
+  if len(versionsRaw) == 0 {
+    shell.ErrorExit("does match any link")
+  }
 
   versions := []semver.Version{}
   for _, raw := range versionsRaw {
     v, _ := semver.Parse(raw)
     versions = append(versions, v)
   }
+
   semver.Sort(versions)
   latestVersion := versions[len(versions)-1]
 

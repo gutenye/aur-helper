@@ -2,15 +2,24 @@
 #
 # Summary: Check upstream for new version, and update the PKGBUILD file.
 #
-# Usage: gutaur check <version> <url> <regexp>
+# Usage: gutaur check [version url regexp]
 #
 
 set -e
-[ -n "$APP_DEBUG" ] && set -x
+(( $DEBUG >= 3 )) && set -x
 source "$APP_ROOT/libexec/lib.sh"
 
 main() {
-  gutaur-check "$@"
+  if [[ "$1" == "" ]]; then
+    arg=$(app-cat)
+    if [[ $arg == "" ]];then
+      say "::SKIP:: $dir -- there is no _watch in PKGBUILD file"
+    else
+      gutaur-check $arg
+    fi
+  else
+    gutaur-check "$@"
+  fi
 }
 
 main "$@"

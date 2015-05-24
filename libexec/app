@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 set -e
+export DEBUG=${DEBUG:-0}
+(( $DEBUG >= 3 )) && export PS4='+ [${BASH_SOURCE##*/}:${LINENO}] ' && set -x
 export -n CDPATH
-
-
-if [ -n "$APP_DEBUG" ]; then
-  export PS4='+ [${BASH_SOURCE##*/}:${LINENO}] '
-  set -x
-fi
 
 absolutename() { readlink -f "$1"; }
 bin_path=`dirname $(absolutename "$0")`

@@ -8,7 +8,7 @@
 # Upload source tarball to https://aur.archlinux.org
 
 set -e
-[ -n "$APP_DEBUG" ] && set -x
+(( $DEBUG >= 3 )) && set -x
 source "$APP_ROOT/libexec/lib.sh"
 
 [[ -z "$1" ]] && app-help --usage upload >&2 && exit 1
