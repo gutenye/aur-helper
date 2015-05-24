@@ -1,0 +1,6 @@
+[Unit]
+Description=Gutaur autopublish via docker service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/docker run -v /app/aurs:/app gutenye/archlinux-autopublish-with-guten

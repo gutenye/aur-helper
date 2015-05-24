@@ -1,0 +1,8 @@
+[Unit]
+Description=Gutaur autopublish via docker timer
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=default.target
