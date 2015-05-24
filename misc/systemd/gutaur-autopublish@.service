@@ -3,4 +3,5 @@ Description=Gutaur autopublish service
 After=network.target
 
 [Service]
+User=%i
 ExecStart=/usr/bin/gutaur autopublish /app/aurs/*

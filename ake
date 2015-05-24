@@ -13,11 +13,11 @@ package() {
     * ) lib="usr/lib" ;;
   esac
 
-  mkdir -p "$prefix/usr/bin"
-  mkdir -p "$prefix/$lib/systemd/system"
   mkdir -p "$prefix/usr/share/gutaur"
+  mkdir -p "$prefix/$lib/systemd/system"
+  mkdir -p "$prefix/usr/bin"
   cp -r bin libexec VERSION "$prefix/usr/share/gutaur"
-  cp misc/*.{service,timer} "$prefix/$lib/systemd/system"
+  cp misc/systemd/* "$prefix/$lib/systemd/system"
   ln -s "/usr/share/gutaur/bin/gutaur" "$prefix/usr/bin"
 }
 
