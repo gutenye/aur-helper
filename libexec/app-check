@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Summary: Check upstream for new version, and update the PKGBUILD file.
+# Summary: Check upstream for new version
 #
 # Usage: gutaur check [version url regexp]
 #

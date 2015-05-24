@@ -51,8 +51,11 @@ $ gutaur upload
 $ gutaur publish
 > Invoke source and upload.
 
+$ gutaur check
+> Return new version if avaliable
+
 $ gutaur publish 1.0.3
-> Download upstream 1.0.3 version and publish it.
+> Publish version 1.0.3
 
 $ gutaur autopublish
 > Check upstream version, if found a new one, publish it.
