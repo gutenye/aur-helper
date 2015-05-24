@@ -13,7 +13,7 @@ source "$APP_ROOT/libexec/lib.sh"
 
 [[ -z "$1" ]] && app-help --usage upload >&2 && exit 1
 
-AUR_CONFIG=${AUR_CONFIG:-$HOME/.config/aurupload.conf}
+AUR_CONFIG=${AUR_CONFIG:-$HOME/.gutaurrc}
 declare -A categorys
 categorys[daemons]=2
 categorys[devel]=3

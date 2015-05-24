@@ -27,7 +27,7 @@ autopublish() {
   cd "$dir"
   arg=$(app-cat)
   if [[ $arg == "" ]];then
-    say "::SKIP:: $dir -- can not find _watch variable in PKGBUILD file"
+    say "::SKIP:: $dir -- there is no _watch in PKGBUILD file"
     exit 0
   fi
   say "::BEGIN:: $dir"
