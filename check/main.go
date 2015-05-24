@@ -19,6 +19,7 @@ func main() {
 }
 
 func Check(curVersionRaw, url, pattern string) {
+  //pd(curVersionRaw, url, pattern)
   curVersion, err := semver.Parse(curVersionRaw)
   if err != nil {
     shell.ErrorExit(err)
