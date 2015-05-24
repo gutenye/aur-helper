@@ -2,7 +2,7 @@ Guten AUR, a Arch Linux AUR development helper
 ===============================================
 
 [Homepage](https://github.com/gutenye/gutaur) |
-[Documentation](https://github.com/gutenye/gutaur/wiki) |
+[Documentation](https://github.com/gutenye/gutpackaging/wiki) |
 [Issue Tracker](https://github.com/gutenye/gutaur/issues) |
 [MIT License](http://choosealicense.com/licenses/mit) |
 [by Guten](http://guten.me) |
